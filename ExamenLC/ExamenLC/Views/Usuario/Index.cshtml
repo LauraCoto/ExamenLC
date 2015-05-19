@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <script src="~/app/Controller/UsuarioCtrl.js"></script>
+</head>
+
+
+<div class="container" ng-app="appUsuario" ng-controller="UsuarioCtrl">
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Id Usuario</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Id Rol</th>
+                </tr>
+
+                <tr ng-repeat="item in ListaUsuarios">
+                    <td> {{item.idusuario}}  </td>
+                    <td> {{item.nombre}} </td>
+                    <td> {{item.edad}} </td>
+                    <td> {{item.idrol}} </td>
+
+                    <td>
+                        <button type="button" ng-click="EditarRegistro(item)" class="btn-green">Editar</button>
+                        <button type="button" ng-click="EliminarRegistro(item)" class="btn-danger">Borrar</button>
+                    </td>
+                </tr>
+
+                <tr ng-if="MostrarControles">
+
+                    <td><input type="text" class="form-control" placeholder="id Usuario" ng-model="Registro.idusuario" /> </td>
+                    <td><input type="text" class="form-control" placeholder="Nombre" maxlength="10" name="txtNombre" ng-model="Registro.nombre" /></td>
+                    <td><input type="text" class="form-control" placeholder="Edad" ng-model="Registro.edad" /></td>
+                    
+
+                    <td>
+                        <select ng-model="Registro.idrol" ng-options="i.id as i.nombre for i in ListaRoles">
+                            <option>seleccione rol</option>
+                        </select>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="Guardar()">Aceptar</button>
+                        <button type="button" class="btn btn-default" ng-click="Limpiar()">Cancelar</button>
+                    </td>
+                </tr>
+
+
+
+
+            </table>
+            <a ng-click="NuevoRegistro()" class="btn btn-primary">Agregar</a>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

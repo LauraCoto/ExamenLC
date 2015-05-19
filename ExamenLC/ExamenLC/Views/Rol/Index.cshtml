@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <script src="~/app/Controller/RolCtrl.js"></script>
+</head>
+
+
+<div class="container" ng-app="appRol" ng-controller="RolCtrl">
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Alias</th>
+                    <th>Descripcion</th>
+                </tr>
+
+                <tr ng-repeat="item in ListaRoles">
+                    <td> {{item.id}}  </td>
+                    <td> {{item.nombre}} </td>
+                    <td> {{item.Alias}} </td>
+                    <td> {{item.descripcion}} </td>
+
+                    <td>
+                        <button type="button" ng-click="EditarRegistro(item)" class="btn-green">Editar</button>
+                        <button type="button" ng-click="EliminarRegistro(item)" class="btn-danger">Borrar</button>
+                    </td>
+                </tr>
+
+                <tr ng-if="MostrarControles">
+
+                    <td><input type="text" class="form-control" placeholder="id" ng-model="Registro.id" /> </td>
+                    <td><input type="text" class="form-control" placeholder="Nombre" maxlength="10" name="txtNombre" ng-model="Registro.nombre" /></td>
+                    <td><input type="text" class="form-control" placeholder="Alias" ng-model="Registro.Alias" /></td>
+                    <td><input type="text" class="form-control" placeholder="Descripcion" ng-model="Registro.descripcion" /></td>
+
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="Guardar()">Aceptar</button>
+                        <button type="button" class="btn btn-default" ng-click="Limpiar()">Cancelar</button>
+                    </td>
+                </tr>
+
+
+
+
+            </table>
+            <a ng-click="NuevoRegistro()" class="btn btn-primary">Agregar</a>
+
+        </div>
+    </div>
+</div>
+
+
+
+
